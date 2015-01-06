@@ -6,8 +6,16 @@ var log = console.log;
 
 var fs = require("fs");
 var path = require("path");
-var WNdb = require("WNdb");
-var targetDir = WNdb.path;
+var tar = require("tar");
+var zlib = require("zlib");
+var targetDir = path.join(__dirname, "dict");
+
+if (process.argv.length < 3) {
+  log('Missing tar.gz file to extract.');
+  process.exit(1);
+}
+
+var tarball = process.argv[2];
 
 var files = [
   "adj.exc",
@@ -27,13 +35,22 @@ function copyFile(file, callback) {
 
 function copyFiles(files) {
   if (files.length == 0) {
-  	return;
+    return;
   } else {
-  	var file = files.shift();
-  	copyFile(file, function() {
-  	  copyFiles(files);
-  	})
+    var file = files.shift();
+    copyFile(file, function() {
+      copyFiles(files);
+    })
   }
 };
 
-copyFiles(files);
+function extractTarball() {
+  var input = fs.createReadStream(tarball);
+  input
+    .on("error", log)
+    .pipe(zlib.Unzip())
+    .pipe(tar.Extract({ path: __dirname }))
+    .on("end", function() {
+      copyFiles(files);
+    });
+}
