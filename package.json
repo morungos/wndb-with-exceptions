@@ -1,6 +1,6 @@
 {
   "author": "Stuart Watt <stuart@morungos.com.com>",
-  "name": "WNdb-with-exceptions",
+  "name": "wndb-with-exceptions",
   "description": "WordNet exception files",
   "keywords": ["WordNet"],
   "version": "3.0.0",
