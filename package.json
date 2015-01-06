@@ -3,7 +3,7 @@
   "name": "wndb-with-exceptions",
   "description": "WordNet exception files",
   "keywords": ["WordNet"],
-  "version": "3.0.0",
+  "version": "3.0.1",
   "homepage": "http://wordnet.princeton.edu/",
   "repository": {
     "type": "git",
