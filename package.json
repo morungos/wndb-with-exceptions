@@ -1,0 +1,23 @@
+{
+  "author": "Stuart Watt <stuart@morungos.com.com>",
+  "name": "wndb-with-exceptions",
+  "description": "WordNet exception files",
+  "keywords": ["WordNet"],
+  "version": "3.0.0",
+  "homepage": "http://wordnet.princeton.edu/",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:morungos/WNdb-with-exceptions.git"
+  },
+  "dependencies": {
+    "tar": "latest"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": ">=0.6.0"
+  },
+  "scripts": {
+    "postinstall": "node unpack.js WNdb-3.0.tar.gz"
+  }
+}
