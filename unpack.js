@@ -54,3 +54,5 @@ function extractTarball() {
       copyFiles(files);
     });
 }
+
+extractTarball();
