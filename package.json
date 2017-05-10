@@ -19,5 +19,6 @@
   },
   "scripts": {
     "postinstall": "node unpack.js WNdb-3.0.tar.gz"
-  }
+  },
+  "license" : "SEE LICENSE IN LICENSE"
 }
