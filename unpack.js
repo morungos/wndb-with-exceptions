@@ -46,10 +46,11 @@ function copyFiles(files) {
 
 function extractTarball() {
   var input = fs.createReadStream(tarball);
+  var oldTar = typeof tar.Extract !== 'undefined';
   input
     .on("error", log)
     .pipe(zlib.Unzip())
-    .pipe(tar.Extract({ path: __dirname }))
+    .pipe(oldTar ? tar.Extract({ path: __dirname }) : tar.x({cwd: __dirname}))
     .on("end", function() {
       copyFiles(files);
     });
