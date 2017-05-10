@@ -49,7 +49,7 @@ function extractTarball() {
   input
     .on("error", log)
     .pipe(zlib.Unzip())
-    .pipe(tar.Extract({ path: __dirname }))
+    .pipe(tar.x({ C: __dirname }))
     .on("end", function() {
       copyFiles(files);
     });
